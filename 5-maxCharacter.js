@@ -1,3 +1,9 @@
+// algo explained for maxCharacter function###############################
+
+// first get a char from string and see if its exists in allCharArry if it doesn't push it, if it dose increment the 
+// previous index value by 1 
+
+// at last check if the most occured character from the allCharArry
 const maxCharacter = (santance) => {
 
   const allCharArry = [];
@@ -26,14 +32,36 @@ const maxCharacter = (santance) => {
 
   return maxOccuredChar;
 }
+// I admit the above code is complicated it's the first attempt for someone who came from C and C++
 
-// I admit it's complicated
 
-// algo explained###############################
+// you might find below funciton more readable and concise
+const simpleMaxChar = (str) => {
 
-// first get a char from string and see if its exists in allCharArry if it doesn't push it, if it dose increment the 
-// previous index value by 1 
+  const charObj = {};
 
-// at last check if the most occured character from the allCharArry
+  str.split('').forEach((character) => {
+    if (charObj[character]) {
+      charObj[character]++;
+    } else {
+      charObj[character] = 1;
+    }
+  });
 
-console.log(maxCharacter('oooooefjdofjsdfjjo'));
+  let maxCharNum = 0;
+  let maxChar;
+  for (let char in charObj) {
+    if (charObj[char] > maxCharNum) {
+      maxCharNum = charObj[char];
+      maxChar = char;
+    }
+  }
+
+  return maxChar;
+}
+
+console.log(simpleMaxChar('aadilkelawala'));
+// console.log(maxCharacter('oooooefjdofjsdfjjo'));
+
+
+
